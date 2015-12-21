@@ -57,6 +57,11 @@ class Migration_Add_users extends CI_Migration {
                 'date_of_birth' => array(
                     'type' => 'DATE',
                 ),
+                'company' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => '255',
+                    'null' => TRUE,
+                ),
                 'occupation' => array(
                     'type' => 'VARCHAR',
                     'constraint' => '255',
