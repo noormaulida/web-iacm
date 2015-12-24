@@ -35,8 +35,9 @@
 											</h4>
 											<div class="space-6"></div>
 											<?php
+											echo validation_errors();
           									$attributes = array("id" => "loginform", "name" => "loginform");
-          									echo form_open("users/do_login", $attributes);?>
+          									echo form_open("users/login", $attributes);?>
 												<fieldset>
 													<label class="block clearfix">
 														<span class="block input-icon input-icon-right">
@@ -44,7 +45,7 @@
 																$data = array(
 																	'class'			=> 'form-control',
 																	'placeholder' 	=> 'Email',
-																	'id'			=> 'email',
+																	'name'			=> 'email',
 													            );
 													            echo form_input($data);
 															?>
@@ -58,7 +59,7 @@
 																$data = array(
 																	'class'			=> 'form-control',
 																	'placeholder' 	=> 'Password',
-																	'id'			=> 'password',
+																	'name'			=> 'password',
 													            );
 													            echo form_password($data);
 															?>
@@ -69,10 +70,11 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<!-- <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">Login</span>
-														</button>
+														</button> -->
+														<?php echo form_submit('btnLogin', 'Login');?>
 													</div>
 													<div class="space-4"></div>
 												</fieldset>
