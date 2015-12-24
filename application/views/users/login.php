@@ -6,11 +6,11 @@
 		<title>Login</title>
 		<meta name="description" content="User login page" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-		<link rel="stylesheet" href="<?php echo "/"; ?>assets/admin/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="<?php echo "/"; ?>assets/admin/font-awesome/4.2.0/css/font-awesome.min.css" />
-		<link rel="stylesheet" href="<?php echo "/"; ?>assets/admin/fonts/fonts.googleapis.com.css" />
-		<link rel="stylesheet" href="<?php echo "/";?>assets/admin/css/ace.min.css" />
-		<link rel="stylesheet" href="<?php echo "/";?>assets/admin/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/font-awesome/4.2.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/fonts/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/ace.min.css" />
+		<link rel="stylesheet" href="<?php echo base_url(); ?>assets/admin/css/ace-rtl.min.css" />
 	</head>
 	<body class="login-layout">
 		<div class="main-container">
@@ -20,7 +20,7 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<a href="<?php echo "/" ?>"><i class="ace-icon fa fa-leaf green"></i></a>
+									<a href="<?php echo base_url(); ?>"><i class="ace-icon fa fa-leaf green"></i></a>
 								</h1>
 								<h4 class="blue" id="id-company-text"></h4>
 							</div>
@@ -203,20 +203,20 @@
 				</div>
 			</div>
 		</div>
-		<script src="<?php echo "/";?>assets/admin/js/jquery.2.1.1.min.js"></script>
+		<script src="<?php echo base_url(); ?>assets/admin/js/jquery.2.1.1.min.js"></script>
 		<script type="text/javascript">
-			window.jQuery || document.write("<script src='<?php echo "/";?>assets/admin/js/jquery.min.js'>"+"<"+"/script>");
+			window.jQuery || document.write("<script src='<?php echo base_url(); ?>assets/admin/js/jquery.min.js'>"+"<"+"/script>");
 		</script>
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo "/";?>assets/admin/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='<?php echo base_url(); ?>assets/admin/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script type="text/javascript">
 			jQuery(function($) {
 			 $(document).on('click', '.toolbar a[data-target]', function(e) {
 				e.preventDefault();
 				var target = $(this).data('target');
-				$('.widget-box.visible').removeClass('visible');//hide others
-				$(target).addClass('visible');//show target
+				$('.widget-box.visible').removeClass('visible');
+				$(target).addClass('visible');
 			 });
 			});
 		</script>
