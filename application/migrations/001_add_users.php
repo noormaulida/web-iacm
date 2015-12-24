@@ -19,6 +19,7 @@ class Migration_Add_users extends CI_Migration {
         avatar
         login_count
         is_admin
+        last_login_ip
         validated_with
         validated_at
         created_at
@@ -91,6 +92,11 @@ class Migration_Add_users extends CI_Migration {
                 'login_count' => array(
                     'type' => 'INT',
                     'deault' => 0,
+                ),
+                'last_login_ip' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => '20',
+                    'null'=> TRUE,
                 ),
                 'is_admin' => array(
                     'type' => 'TINYINT',

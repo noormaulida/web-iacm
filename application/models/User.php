@@ -36,7 +36,7 @@ class User extends CI_Model {
 
         if ($query->num_rows() == 1) {
             $result = $query->result();
-            $this->add_login_count($result);
+            $this->update_detail_login($result);
             return $result;
         } else {
             return false;
@@ -59,7 +59,7 @@ class User extends CI_Model {
         }
     }
 
-    private function add_login_count($result)
+    private function update_detail_login($result)
     {
         foreach ($result as $value) {
             $id = $value->id;
@@ -67,7 +67,8 @@ class User extends CI_Model {
         }
         $count++;
         $data = array(
-           'login_count' => $count
+           'login_count' => $count,
+           'last_login_ip' => $this->input->ip_address(),
         );
         $this->db->where('id', $id);
         $this->db->update('users', $data);

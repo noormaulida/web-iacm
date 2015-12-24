@@ -9,8 +9,6 @@ class Users extends CI_Controller {
 
     public function login()
     {
-        // $ip = $this->input->ip_address();
-        // echo $ip;
         if (is_admin_session()) {
             $this->load->view('dashboard/_include/header');
             $this->load->view('dashboard/index');
