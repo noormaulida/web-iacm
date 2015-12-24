@@ -13,6 +13,7 @@ class Migration_Add_users extends CI_Migration {
         address
         phone
         date_of_birth
+        company
         occupation
         institution
         avatar
