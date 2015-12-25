@@ -70,11 +70,10 @@
 													<div class="space"></div>
 
 													<div class="clearfix">
-														<!-- <button type="button" class="width-35 pull-right btn btn-sm btn-primary">
+														<button type="submit" class="width-35 pull-right btn btn-sm btn-primary">
 															<i class="ace-icon fa fa-key"></i>
 															<span class="bigger-110">Login</span>
-														</button> -->
-														<?php echo form_submit('btnLogin', 'Login');?>
+														</button>
 													</div>
 													<div class="space-4"></div>
 												</fieldset>
