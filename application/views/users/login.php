@@ -30,7 +30,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-cubes green"></i>
+												<i class="ace-icon fa fa-check-square green"></i>
 												Login
 											</h4>
 											<div class="space-6"></div>
