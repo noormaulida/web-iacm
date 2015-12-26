@@ -20,7 +20,7 @@
 						<div class="login-container">
 							<div class="center">
 								<h1>
-									<a href="<?php echo base_url(); ?>"><i class="ace-icon fa fa-leaf green"></i></a>
+									<a href="<?php echo base_url(); ?>"><i class="ace-icon fa fa-paper-plane green"></i></a>
 								</h1>
 								<h4 class="blue" id="id-company-text"></h4>
 							</div>
@@ -30,7 +30,7 @@
 									<div class="widget-body">
 										<div class="widget-main">
 											<h4 class="header blue lighter bigger">
-												<i class="ace-icon fa fa-coffee green"></i>
+												<i class="ace-icon fa fa-cubes green"></i>
 												Login
 											</h4>
 											<div class="space-6"></div>

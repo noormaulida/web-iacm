@@ -38,6 +38,7 @@ class Users extends CI_Controller {
                         ];
                         $this->session->set_userdata('logged_in', $session_data);
                         $this->session->set_userdata('role', $value->is_admin == true ? "admin" : "user");
+                        $this->session->set_userdata('unvalidated_member', $this->user->count_unvalidated_members());
                         if ($value->is_admin) {
                             $this->session->set_flashdata('success', 'Login Berhasil');
                             $this->session->set_userdata('tab', "dashboard-index");

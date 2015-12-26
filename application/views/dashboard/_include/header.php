@@ -30,7 +30,7 @@
 				<div class="navbar-header pull-left">
 					<a href="index.html" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-paper-plane"></i>
 							Web IACM
 						</small>
 					</a>
@@ -39,26 +39,37 @@
 				<div class="navbar-buttons navbar-header pull-right" role="navigation">
 					<ul class="nav ace-nav">
 						<li class="grey">
+							<?php
+								$notif = 0;
+								if($this->session->userdata('unvalidated_member') != "0"): $notif++; endif;
+							?>
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
-								<span class="badge badge-success">5</span>
+								<?php
+									if($notif > 0):
+								?>
+									<span class="badge badge-success"><?= $notif ?></span>
+								<?php endif; ?>
 							</a>
 
 							<ul class="dropdown-menu-right dropdown-navbar dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-envelope-o"></i>
-									5 Messages
+									<?= ($notif > 0) ? $notif : '' ?> Pesan <?= ($notif > 0) ? 'baru' : '' ?>
 								</li>
 
 								<li class="dropdown-content">
 									<ul class="dropdown-menu dropdown-navbar">
+									<?php
+										if($this->session->userdata('unvalidated_member') != "0"):
+									?>
 										<li>
-											<a href="#" class="clearfix">
-												<img src="<?= base_url() ?>assets/admin/avatars/avatar.png" class="msg-photo" alt="Alex's Avatar" />
+											<a href="<?= base_url()?>users/" class="clearfix">
+												<img src="<?= base_url() ?>assets/uploads/avatar/system.png" class="msg-photo" />
 												<span class="msg-body">
 													<span class="msg-title">
-														<span class="blue">Alex:</span>
-														Ciao sociis natoque penatibus et auctor ...
+														<span class="blue">Sistem:</span>
+														<?= $this->session->userdata('unvalidated_member') ?> data registrasi belum divalidasi
 													</span>
 
 													<span class="msg-time">
@@ -68,80 +79,15 @@
 												</span>
 											</a>
 										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="<?= base_url() ?>assets/admin/avatars/avatar3.png" class="msg-photo" alt="Susan's Avatar" />
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Susan:</span>
-														Vestibulum id ligula porta felis euismod ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>20 minutes ago</span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="<?= base_url() ?>assets/admin/avatars/avatar4.png" class="msg-photo" alt="Bob's Avatar" />
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Bob:</span>
-														Nullam quis risus eget urna mollis ornare ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>3:15 pm</span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="<?= base_url() ?>assets/admin/avatars/avatar2.png" class="msg-photo" alt="Kate's Avatar" />
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Kate:</span>
-														Ciao sociis natoque eget urna mollis ornare ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>1:33 pm</span>
-													</span>
-												</span>
-											</a>
-										</li>
-
-										<li>
-											<a href="#" class="clearfix">
-												<img src="<?= base_url() ?>assets/admin/avatars/avatar5.png" class="msg-photo" alt="Fred's Avatar" />
-												<span class="msg-body">
-													<span class="msg-title">
-														<span class="blue">Fred:</span>
-														Vestibulum id penatibus et auctor  ...
-													</span>
-
-													<span class="msg-time">
-														<i class="ace-icon fa fa-clock-o"></i>
-														<span>10:09 am</span>
-													</span>
-												</span>
-											</a>
-										</li>
+									<?php
+										endif;
+									?>
 									</ul>
 								</li>
 
 								<li class="dropdown-footer">
 									<a href="inbox.html">
-										See all messages
+										Lihat Semua Notifikasi
 										<i class="ace-icon fa fa-arrow-right"></i>
 									</a>
 								</li>
@@ -217,7 +163,13 @@
 						<i class="menu-icon fa fa-desktop"></i>
 						<span class="menu-text">
 							User
-							<span class="badge badge-primary">5</span>&nbsp;
+							<?php
+								if($this->session->userdata('unvalidated_members') != "0"):
+							?>
+								<span class="badge badge-primary"><?= $this->session->userdata('unvalidated_member')?></span>
+							<?php
+								endif;
+							?>
 						</span>
 
 						<b class="arrow fa fa-angle-down"></b>
@@ -230,6 +182,16 @@
 							<a href="<?= base_url() ?>users/">
 								<i class="menu-icon fa fa-caret-right"></i>
 								All Registration
+								<?php
+									if($this->session->userdata('unvalidated_member') != "0"):
+								?>
+									<span class="badge badge-transparent tooltip-error" 
+										title="<?= $this->session->userdata('unvalidated_member') ?> data belum divalidasi">
+										<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+									</span>
+								<?php
+									endif;
+								?>
 							</a>
 							<b class="arrow"></b>
 						</li>
@@ -281,9 +243,6 @@
 
 						<span class="menu-text">
 							Agenda
-							<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-								<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-							</span>
 						</span>
 					</a>
 
@@ -312,6 +271,24 @@
 					<a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-tags"></i>
 						<span class="menu-text"> Hashtags </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-bug"></i>
+						<span class="menu-text"> Bug Report </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-cogs"></i>
+						<span class="menu-text"> Setting </span>
 					</a>
 
 					<b class="arrow"></b>
