@@ -91,7 +91,7 @@ class Migration_Add_users extends CI_Migration {
                 ),
                 'login_count' => array(
                     'type' => 'INT',
-                    'deault' => 0,
+                    'default' => 0,
                 ),
                 'last_login_ip' => array(
                     'type' => 'VARCHAR',
