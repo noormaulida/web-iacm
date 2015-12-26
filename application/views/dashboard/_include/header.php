@@ -206,7 +206,7 @@
 					</ul>
 				</li>
 
-				<li class="">
+				<li class="<?= (strpos($this->session->userdata('tab'),'news')!==false) ? 'active open':'' ?>">
 					<a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-pencil-square-o"></i>
 						<span class="menu-text"> News </span>
@@ -217,19 +217,19 @@
 					<b class="arrow"></b>
 
 					<ul class="submenu">
-						<li class="">
-							<a href="form-elements.html">
+						<li class="<?= $this->session->userdata('tab')=="news-index" ? 'active':'' ?>">
+							<a href="">
 								<i class="menu-icon fa fa-caret-right"></i>
-								Create News
+								Show All News
 							</a>
 
 							<b class="arrow"></b>
 						</li>
 
-						<li class="">
-							<a href="form-elements-2.html">
+						<li class="<?= $this->session->userdata('tab')=="news-create" ? 'active':'' ?>">
+							<a href="<?= base_url() ?>news/create">
 								<i class="menu-icon fa fa-caret-right"></i>
-								Show All News
+								Create News
 							</a>
 
 							<b class="arrow"></b>
