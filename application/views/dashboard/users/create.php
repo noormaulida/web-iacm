@@ -10,7 +10,7 @@
 								<i class="ace-icon fa fa-home home-icon"></i>
 								<a href="#">Home</a>
 							</li>
-							<li class="active">New Admin</li>
+							<li class="active">New User</li>
 						</ul>
 						<div class="nav-search" id="nav-search">
 							<form class="form-search">
@@ -19,7 +19,7 @@
 									<i class="ace-icon fa fa-search nav-search-icon"></i>
 								</span>
 							</form>
-						</div><!-- /.nav-search -->
+						</div>
 					</div>
 
 					<div class="page-content">
@@ -69,7 +69,7 @@
 											<b>.container</b>
 										</label>
 									</div>
-								</div><!-- /.pull-left -->
+								</div>
 
 								<div class="pull-left width-50">
 									<div class="ace-settings-item">
@@ -86,10 +86,9 @@
 										<input type="checkbox" class="ace ace-checkbox-2" id="ace-settings-highlight" />
 										<label class="lbl" for="ace-settings-highlight"> Alt. Active Item</label>
 									</div>
-								</div><!-- /.pull-left -->
-							</div><!-- /.ace-settings-box -->
-						</div><!-- /.ace-settings-container -->
-
+								</div>
+							</div>
+						</div>
 						<div class="page-header">
 							<h1>
 								Create New User
@@ -103,11 +102,8 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<i class="ace-icon fa fa-times"></i>
 										</button>
-
-										<strong>
-											<i class="ace-icon fa fa-times"></i>
-											Cek Input Data Anda Kembali
-										</strong>
+										<i class="ace-icon fa fa-times"></i>
+										Cek input data Anda kembali
 										<br />
 									</div>
 								<?php
@@ -118,10 +114,8 @@
 										<button type="button" class="close" data-dismiss="alert">
 											<i class="ace-icon fa fa-times"></i>
 										</button>
-										<strong>
-											<i class="ace-icon fa fa-<?=$this->session->flashdata('success') ? 'check' : 'times'?>"></i>
-											<?=$this->session->flashdata('success') ? $this->session->flashdata('success') : $this->session->flashdata('error')?>
-										</strong>
+										<i class="ace-icon fa fa-<?=$this->session->flashdata('success') ? 'check' : 'times'?>"></i>
+										<?=$this->session->flashdata('success') ? $this->session->flashdata('success') : $this->session->flashdata('error')?>
 									</div>
 								<?php
 									endif;
@@ -278,6 +272,21 @@
 										</div>
 									</div>
 
+									<div class="form-group <?= form_error('is_admin') ? 'has-error' : ''; ?>">
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Hak Akses </label>
+
+										<div class="col-sm-9">
+											<?php
+												$options = array(
+													'' => "--Pilih salah satu--",
+													'1' => 'Administrator',
+													'0' => 'User',
+												);
+												echo form_dropdown('is_admin', $options, !form_error('is_admin') ? set_value('is_admin') : '');
+											?>
+										</div>
+									</div>
+
 									<div class="space-4"></div>
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"><b> Data Universitas </b></label>
@@ -333,7 +342,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"><b> Data Pekerjaan Saat Ini </b></label>
 									</div>
 
-									<div class="form-group <?= form_error('company') ? 'has-error' : ''; ?>s">
+									<div class="form-group <?= form_error('company') ? 'has-error' : ''; ?>">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nama Perusahaan </label>
 										<div class="col-sm-9">
 										<?php

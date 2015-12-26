@@ -147,14 +147,15 @@
 								</li>
 							</ul>
 						</li>
-
+						<?php
+							$session_data = $this->session->userdata('logged_in');
+						?>
 						<li class="light-blue">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="<?= base_url() ?>assets/uploads/avatar/default.png" />
 								<span class="user-info">
 									<small>Welcome,</small>
                                     <?php
-                                    $session_data = $this->session->userdata('logged_in');
                                     echo $session_data['nick_name'];
                                     ?>
 								</span>
@@ -216,6 +217,7 @@
 						<i class="menu-icon fa fa-desktop"></i>
 						<span class="menu-text">
 							User
+							<span class="badge badge-primary">5</span>&nbsp;
 						</span>
 
 						<b class="arrow fa fa-angle-down"></b>
@@ -299,7 +301,7 @@
 
 				<li class="">
 					<a href="#" class="dropdown-toggle">
-						<i class="menu-icon fa fa-tag"></i>
+						<i class="menu-icon fa fa-youtube-play"></i>
 						<span class="menu-text"> Videos </span>
 					</a>
 
@@ -308,8 +310,8 @@
 
 				<li class="">
 					<a href="#" class="dropdown-toggle">
-						<i class="menu-icon fa fa-tag"></i>
-						<span class="menu-text"> Hashtag </span>
+						<i class="menu-icon fa fa-tags"></i>
+						<span class="menu-text"> Hashtags </span>
 					</a>
 
 					<b class="arrow"></b>

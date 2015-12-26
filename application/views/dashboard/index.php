@@ -103,18 +103,21 @@
 
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="alert alert-block alert-success">
-									<button type="button" class="close" data-dismiss="alert">
-										<i class="ace-icon fa fa-times"></i>
-									</button>
-
-									<i class="ace-icon fa fa-check green"></i>
-									Login berhasil
-								</div>
-
-							</div><!-- /.col -->
-						</div><!-- /.row -->
+								<?php
+								if ($this->session->flashdata('success') || $this->session->flashdata('error')):
+								?>
+									<div class="alert alert-<?=$this->session->flashdata('success') ? 'success' : 'danger'; ?>">
+										<button type="button" class="close" data-dismiss="alert">
+											<i class="ace-icon fa fa-times"></i>
+										</button>
+										<i class="ace-icon fa fa-<?=$this->session->flashdata('success') ? 'check' : 'times'?>"></i>
+										<?=$this->session->flashdata('success') ? $this->session->flashdata('success') : $this->session->flashdata('error')?>
+									</div>
+								<?php
+									endif;
+								?>
+							</div>
+						</div>
 						<div class="row">
 							<div class="col-sm-12">
 								<div class="widget-box">

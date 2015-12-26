@@ -7,7 +7,7 @@ class User extends CI_Model {
 
     public function sign_in($email, $password)
     {
-        $this->db->select('id, login_count, is_admin, full_name, nick_name');
+        $this->db->select('*');
         $this->db->from('users');
         $this->db->where('email', $email);
         $this->db->where('password', $this->_hash($password));
@@ -22,6 +22,26 @@ class User extends CI_Model {
         } else {
             return false;
         }
+    }
+
+    public function all()
+    {
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->order_by('validated_at', 'asc');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
+
+    public function all_admin()
+    {
+        $this->db->select('id, full_name');
+        $this->db->from('users');
+        $this->db->where('is_admin', true);
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function find($id, $param = null)
