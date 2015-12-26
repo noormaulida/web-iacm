@@ -81,6 +81,24 @@ class User extends CI_Model {
         return $this->db->insert('users', $data);
     }
 
+    public function count_unvalidated_members()
+    {
+        $this->db->select('COUNT(id) as count');
+        $this->db->from('users');
+        $this->db->where('validated_at', null);
+
+        $query = $this->db->get();
+
+        if ($query->num_rows() == 1) {
+            foreach ($query->result() as $value) {
+                $count = $value->count;
+            }
+            return $count;
+        } else {
+            return "0";
+        }
+    }
+
     private function update_detail_login($result)
     {
         foreach ($result as $value) {
