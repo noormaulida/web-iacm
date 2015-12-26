@@ -30,7 +30,7 @@
 				<div class="navbar-header pull-left">
 					<a href="index.html" class="navbar-brand">
 						<small>
-							<i class="fa fa-leaf"></i>
+							<i class="fa fa-paper-plane"></i>
 							Web IACM
 						</small>
 					</a>
@@ -182,6 +182,16 @@
 							<a href="<?= base_url() ?>users/">
 								<i class="menu-icon fa fa-caret-right"></i>
 								All Registration
+								<?php
+									if($this->session->userdata('unvalidated_member') != "0"):
+								?>
+									<span class="badge badge-transparent tooltip-error" 
+										title="<?= $this->session->userdata('unvalidated_member') ?> data belum divalidasi">
+										<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+									</span>
+								<?php
+									endif;
+								?>
 							</a>
 							<b class="arrow"></b>
 						</li>
@@ -233,9 +243,6 @@
 
 						<span class="menu-text">
 							Agenda
-							<span class="badge badge-transparent tooltip-error" title="2 Important Events">
-								<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
-							</span>
 						</span>
 					</a>
 
@@ -264,6 +271,24 @@
 					<a href="#" class="dropdown-toggle">
 						<i class="menu-icon fa fa-tags"></i>
 						<span class="menu-text"> Hashtags </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-bug"></i>
+						<span class="menu-text"> Bug Report </span>
+					</a>
+
+					<b class="arrow"></b>
+				</li>
+
+				<li class="">
+					<a href="#" class="dropdown-toggle">
+						<i class="menu-icon fa fa-cogs"></i>
+						<span class="menu-text"> Setting </span>
 					</a>
 
 					<b class="arrow"></b>
