@@ -160,7 +160,7 @@
 
 				<li class="<?= (strpos($this->session->userdata('tab'),'users')!==false) ? 'active open':'' ?>">
 					<a href="#" class="dropdown-toggle">
-						<i class="menu-icon fa fa-desktop"></i>
+						<i class="menu-icon fa fa-users"></i>
 						<span class="menu-text">
 							User
 							<?php
