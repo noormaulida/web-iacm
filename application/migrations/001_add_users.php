@@ -27,7 +27,6 @@ class Migration_Add_users extends CI_Migration {
          */
         public function up()
         {
-            $this->load->model('user');
             $this->dbforge->add_field('id');
             $this->dbforge->add_field(array(
                 'full_name' => array(
