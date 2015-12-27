@@ -2,6 +2,14 @@
 
 class Migrate extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        if (!$this->input->is_cli_request()) {
+            exit('Direct access is not allowed');
+        }
+    }
+
     public function index()
     {
         $this->load->library('migration');
@@ -9,7 +17,7 @@ class Migrate extends CI_Controller
         if ($this->migration->current() === FALSE) {
             show_error($this->migration->error_string());
         } else {
-          echo "success";
+          	echo "Berhasil melakukan migrasi" . PHP_EOL;
         }
     }
 }
