@@ -19,3 +19,13 @@
             return false;
         }
     }
+
+    function is_guest_session()
+    {
+        $CI =& get_instance();
+        if ($CI->session->userdata('logged_in') == false) {
+            return true;
+        } else {
+            return false;
+        }
+    }
