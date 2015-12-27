@@ -51,7 +51,7 @@ class Users extends CI_Controller {
                     }
                 } else {
                     $this->session->set_userdata('tab', "login");
-                    $this->session->set_flashdata('error_login', 'Username/Passwod salah');
+                    $this->session->set_flashdata('error_login', 'Username/Password salah');
                     $this->load->view('users/login');
                 }
             }
