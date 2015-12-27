@@ -66,6 +66,9 @@ class Migration_Add_posts extends CI_Migration {
                 ),
             ));
             $this->dbforge->create_table('posts');
+            $this->db->query('ALTER TABLE `posts`
+                ADD CONSTRAINT `posts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE;'
+            );
         }
 
         public function down()
