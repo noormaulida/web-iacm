@@ -145,11 +145,13 @@
 														<span class="label label-sm label-<?= is_null($value->validated_at) ? "warning" : "success" ?>">
 															<?php
 															if (is_null($value->validated_at)):
-																echo "Belum divalidasi</span>";
+																echo "<i class='ace-icon fa fa-exclamation-triangle'></i>";
+																echo " Belum divalidasi </span>";
 															else:
 																foreach ($users as $admin):
 																	if ($value->validated_with == $admin->id):
-																		echo "Telah divalidasi </span> oleh " . $admin->full_name ." pada " . $value->validated_at;
+																		echo "<i class='ace-icon fa fa-check'></i>";
+																		echo " Telah divalidasi </span> oleh " . $admin->full_name ." pada " . $value->validated_at;
 																	endif;
 																endforeach;
 															endif;

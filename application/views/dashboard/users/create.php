@@ -374,17 +374,21 @@
 
 
 									<div class="clearfix form-actions">
-										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info" type="input">
-												<i class="ace-icon fa fa-check bigger-110"></i>
-												Submit
-											</button>
-
-											&nbsp; &nbsp; &nbsp;
-											<button class="btn" type="reset">
-												<i class="ace-icon fa fa-undo bigger-110"></i>
-												Reset
-											</button>
+										<div class=".col-xs-12">
+											<center>
+												<button class="btn btn-app btn-warning btn-xs" type="reset">
+													<i class="ace-icon fa fa-undo bigger-160"></i>
+													Reset
+												</button>
+												&nbsp; &nbsp; &nbsp;
+												<button class="btn btn-app btn-primary btn-xs radius-4" type="input">
+													<i class="ace-icon fa fa-floppy-o bigger-160"></i>
+													Submit
+													<span class="badge badge-transparent">
+														<i class="light-red ace-icon fa fa-asterisk"></i>
+													</span>
+												</button>
+											</center>
 										</div>
 									</div>
 								<?= form_close(); ?>

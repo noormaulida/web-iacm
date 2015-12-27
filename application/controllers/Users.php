@@ -83,8 +83,8 @@ class Users extends CI_Controller {
                     "avatar" => "assets/uploads/avatar/default.png",
                     "login_count" => 0,
                     "is_admin" => 0,
-                    "created_at" => time(),
-                    "updated_at" => time(),
+                    "created_at" => date('Y-m-d H:i:s'),
+                    "updated_at" => date('Y-m-d H:i:s'),
                 );
                 $result = $this->user->store($data);
                 if ($result) {
@@ -109,7 +109,7 @@ class Users extends CI_Controller {
 
     public function index()
     {
-        if (is_user_session()) {
+        if (is_user_session() || is_guest_session()) {
             redirect('pages/index', 'refresh');
         }
         $data['users'] = $this->user->all();
@@ -121,7 +121,7 @@ class Users extends CI_Controller {
 
     public function create()
     {
-        if (is_user_session()) {
+        if (is_user_session() || is_guest_session()) {
             redirect('pages/index', 'refresh');
         }
         $this->form_validation->set_rules("full_name", "full_name", "trim|required");
@@ -153,8 +153,8 @@ class Users extends CI_Controller {
                 "avatar" => "assets/uploads/avatar/default.png",
                 "login_count" => 0,
                 "is_admin" => $this->input->post('is_admin'),
-                "created_at" => time(),
-                "updated_at" => time(),
+                "created_at" => date('Y-m-d H:i:s'),
+                "updated_at" => date('Y-m-d H:i:s'),
             );
             $result = $this->user->store($data);
             if ($result) {
@@ -167,5 +167,15 @@ class Users extends CI_Controller {
             $this->load->view('dashboard/users/create');
             $this->load->view('dashboard/_include/footer');
         }
+    }
+
+    public function check_if_email_exist()
+    {
+        $email = $this->input->get('email');
+        $data = [
+            'status' => 'ok',
+            'exist' => $this->user->is_email_exist($email) ? true : false,
+        ];
+        echo json_encode($data);
     }
 }

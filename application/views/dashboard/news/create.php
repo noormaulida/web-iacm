@@ -94,10 +94,6 @@
 								Create News
 							</h1>
 						</div>
-						<?php
-							$attributes = array("id" => "newsform", "name" => "newsform");
-							echo form_open("news/create", $attributes);
-						?>
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="form-group <?= form_error('full_name') ? 'has-error' : ''; ?>">
@@ -121,28 +117,39 @@
 									<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Slug </label>
 
 									<div class="col-sm-9">
-										<div id="seen__slug">-</div>
-										<?php
-											$data = array(
-												'class'			=> 'form-control',
-												'placeholder' 	=> 'Slug',
-												'name'			=> 'slug',
-												'value'			=> !form_error('title') ? set_value('title') : '',
-												'id'			=> 'slug__input',
-								            );
-								            echo form_hidden($data);
-										?>
+										<p id="hidden__slug" hidden></p><p id="seen__slug">-</p>
 									</div>
 								</div>
 							</div>
 						</div>
-						<br />
 						<div class="hr hr-16 hr-dotted"></div>
 						<div class="row">
 							<div class="col-xs-12">
 								<div class="wysiwyg-editor" id="editor1"></div>
 
 								<div class="hr hr-double dotted"></div>
+
+								<div class="clearfix form-actions">
+									<div class=".col-xs-12">
+										<center>
+											<button id="draft__news" class="btn btn-app btn-warning btn-xs radius-4" type="input">
+												<i class="ace-icon fa fa-floppy-o bigger-160"></i>
+												Draft
+												<span class="badge badge-transparent">
+													<i class="light-red ace-icon fa fa-asterisk"></i>
+												</span>
+											</button>
+											&nbsp; &nbsp;
+											<button id="submit__news" class="btn btn-app btn-primary btn-xs radius-4" type="input">
+												<i class="ace-icon fa fa-globe bigger-160"></i>
+												Publish
+												<span class="badge badge-transparent">
+													<i class="light-red ace-icon fa fa-asterisk"></i>
+												</span>
+											</button>
+										</center>
+									</div>
+								</div>
 
 								<script type="text/javascript">
 									var $path_assets = "dist";

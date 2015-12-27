@@ -154,6 +154,23 @@
 					});
 				})
 			</script>
+			<script type="text/javascript">
+				$("#title__input").on('input', function() {
+					var value = { title: $(this).val() };
+					$.get("<?= base_url() . 'news/generate-slug/' ?>", value,
+						function(respon) {
+							if(respon.status.toLowerCase()=="ok") {
+								if(respon.slug) {
+									$("#hidden__slug").html(respon.slug);
+									$("#seen__slug").html("<?= base_url().'pages/news/' ?>"+respon.slug);
+								} else {
+									$("#hidden__slug").html("");
+									$("#seen__slug").html("-");
+								}
+							}
+					}, 'json');
+				});
+			</script>
 		<?php elseif ($this->session->userdata('tab')=='news-create'):?>
 			<script src="<?= base_url() ?>assets/admin/js/jquery-ui.custom.min.js"></script>
 			<script src="<?= base_url() ?>assets/admin/js/jquery.ui.touch-punch.min.js"></script>
@@ -166,9 +183,8 @@
 				jQuery(function($){
 				function showErrorAlert (reason, detail) {
 					var msg='';
-					if (reason==='unsupported-file-type') { msg = "Unsupported format " +detail; }
-					else {
-						//console.log("error uploading file", reason, detail);
+					if (reason==='unsupported-file-type') {
+						msg = "Unsupported format " +detail;
 					}
 					$('<div class="alert"> <button type="button" class="close" data-dismiss="alert">&times;</button>'+ 
 					 '<strong>File upload error</strong> '+msg+' </div>').prependTo('#alerts');
@@ -268,8 +284,41 @@
 					$.get("<?= base_url() . 'news/generate-slug/' ?>", value,
 						function(respon) {
 							if(respon.status.toLowerCase()=="ok") {
-								$("#slug__input").val(respon.slug);
-								$("#seen__slug").html(respon.slug);
+								if(respon.slug) {
+									$("#hidden__slug").html(respon.slug);
+									$("#seen__slug").html("<?= base_url().'pages/news/' ?>"+respon.slug);
+								} else {
+									$("#hidden__slug").html("");
+									$("#seen__slug").html("-");
+								}
+							}
+					}, 'json');
+				});
+				$("#submit__news").on('click',function() {
+					var title = $("#title__input").val();
+					var slug = $("#hidden__slug").html();
+					var content = $("#editor1").html();
+					var value = { action: "submit", title: title, slug: slug, content: content };
+					console.log(value);
+					$.post("<?= base_url() . 'news/store/' ?>", value,
+						function(respon) {
+							if(respon.status.toLowerCase()=="ok") {
+								console.log(respon.status);
+								window.top.location.href = "<?= base_url() . 'news/create'?>";
+							}
+					}, 'json');
+				});
+				$("#draft__news").on('click',function() {
+					var title = $("#title__input").val();
+					var slug = $("#hidden__slug").html();
+					var content = $("#editor1").html();
+					var value = { action: "draft", title: title, slug: slug, content: content };
+					console.log(value);
+					$.post("<?= base_url() . 'news/store/' ?>", value,
+						function(respon) {
+							if(respon.status.toLowerCase()=="ok") {
+								console.log(respon.status);
+								window.top.location.href = "<?= base_url() . 'news/create'?>";
 							}
 					}, 'json');
 				});

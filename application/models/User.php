@@ -109,6 +109,7 @@ class User extends CI_Model {
         $data = array(
            'login_count' => $count,
            'last_login_ip' => $this->input->ip_address(),
+           'updated_at' => date('Y-m-d H:i:s'),
         );
         $this->db->where('id', $id);
         $this->db->update('users', $data);

@@ -166,7 +166,7 @@
 							<?php
 								if($this->session->userdata('unvalidated_members') != "0"):
 							?>
-								<span class="badge badge-primary"><?= $this->session->userdata('unvalidated_member')?></span>
+								<span class="badge badge-warning"><?= $this->session->userdata('unvalidated_member')?></span>
 							<?php
 								endif;
 							?>
@@ -185,9 +185,9 @@
 								<?php
 									if($this->session->userdata('unvalidated_member') != "0"):
 								?>
-									<span class="badge badge-transparent tooltip-error" 
+									<span class="badge badge-transparent tooltip-warning"
 										title="<?= $this->session->userdata('unvalidated_member') ?> data belum divalidasi">
-										<i class="ace-icon fa fa-exclamation-triangle red bigger-130"></i>
+										<i class="ace-icon fa fa-exclamation-triangle orange2 bigger-120"></i>
 									</span>
 								<?php
 									endif;
