@@ -17,7 +17,7 @@ Web Ikatan Alumni Cahaya Madani Banten Boarding School
 1. Add remote git url (**`git remote add origin git@github.com:noormaulida/web-iacm.git`**). You can use **`origin`** for remote name, or something that you like (example: **`something`**).
 1. Run **`git pull origin master`** or **`git pull something master`** (if you use another remote name).
 1. Create dan configure **`application/config/database.php`** file based on **`application/config/database.php.default`**.
-1. Set manually **`$config['migration_version'] = [number]`** in file `application/config/migration.php`. Number used is the last prefix number of all files in **`application/migrations`**.
+1. Set manually **`$config['migration_version'] = [number]`** in file **`application/config/migration.php`**. Number used is the last prefix number of all files in **`application/migrations`**.
 1. Run **`php index.php migrate`** in the root project to migrate database.
 1. Do step 6 and 7 manually if you're added new migration (Note: file migration name must be sequentially prefixed as setting **`$config['migration_type']`** in **`application/config/migration.php`** file).
 1. If you want to rollback the **`017_name_file`** migration (will used **`down`** method), use **`$config['migration_version'] = 16`** (It means you should use the smaller number than your-prefix-migration-name-you-want-to-rollback).
