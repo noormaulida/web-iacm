@@ -39,9 +39,9 @@ class Console extends CI_Controller
                 "validated_with" => 1
             );
             $this->user->store($data);
-            echo "Data administrator baru berhasil disimpan" . PHP_EOL;
+            echo "\033[32mData administrator baru berhasil disimpan\033[0m" . PHP_EOL;
         } else {
-            echo "Email sudah ada di dalam database" . PHP_EOL;
+            echo "\033[31mEmail sudah ada di dalam database\033[0m" . PHP_EOL;
         }
     }
 }

@@ -17,7 +17,7 @@ class Migrate extends CI_Controller
         if ($this->migration->current() === FALSE) {
             show_error($this->migration->error_string());
         } else {
-          	echo "Berhasil melakukan migrasi" . PHP_EOL;
+            echo "\033[32mBerhasil melakukan migrasi\033[0m" . PHP_EOL;
         }
     }
 }
