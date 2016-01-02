@@ -164,10 +164,12 @@
 													'placeholder' 	=> 'Email',
 													'name'			=> 'email',
 													'value'			=> !form_error('email') ? set_value('email') : '',
+													'id'			=> 'email',
 									            );
 									            echo form_input($data);
 											?>
 										</div>
+										<div id="email__exist"></div>
 									</div>
 
 									<div class="form-group">
@@ -179,6 +181,7 @@
 													'class'			=> 'col-xs-10 col-sm-5',
 													'placeholder' 	=> 'Password',
 													'name'			=> 'password',
+													'id'			=> 'password',
 									            );
 									            echo form_password($data);
 											?>
@@ -194,10 +197,12 @@
 													'class'			=> 'col-xs-10 col-sm-5',
 													'placeholder' 	=> 'Konfirmasi Password',
 													'name'			=> 'conf_password',
+													'id'			=> 'conf_password',
 									            );
 									            echo form_password($data);
 											?>
 										</div>
+										<div id="password__match"></div>
 									</div>
 
 									<div class="form-group <?= form_error('address') ? 'has-error' : ''; ?>">
@@ -379,7 +384,7 @@
 													Reset
 												</button>
 												&nbsp; &nbsp; &nbsp;
-												<button class="btn btn-app btn-primary btn-xs radius-4" type="input">
+												<button id="register__btn" class="btn btn-app btn-primary btn-xs radius-4" type="input">
 													<i class="ace-icon fa fa-floppy-o bigger-160"></i>
 													Submit
 													<span class="badge badge-transparent">

@@ -24,8 +24,7 @@
 		<script src="<?= base_url() ?>assets/admin/js/bootstrap.min.js"></script>
 		<script>window.tPrefix = '<?= base_url() ?>';</script>
 		<?php
-		if ($this->session->userdata('tab')=='dashboard-index'):
-		?>
+		if ($this->session->userdata('tab')=='dashboard-index'): ?>
 			<script src="<?= base_url() ?>assets/admin/js/jquery-ui.custom.min.js"></script>
 			<script src="<?= base_url() ?>assets/admin/js/jquery.ui.touch-punch.min.js"></script>
 			<script src="<?= base_url() ?>assets/admin/js/jquery.easypiechart.min.js"></script>
@@ -166,6 +165,39 @@
 								} else {
 									$("#hidden__slug").html("");
 									$("#seen__slug").html("-");
+								}
+							}
+					}, 'json');
+				});
+			</script>
+		<?php elseif ($this->session->userdata('tab')=='users-create'): ?>
+			<script type="text/javascript">
+				$("#conf_password").on('input', function() {
+					var pass = $("#password").val();
+					var conf_pass = $(this).val();
+					if (pass != conf_pass) {
+						var html = "<div class='col-sm-3'></div>";
+						html += "<div class='help-block col-sm-9 col-sm-reset inline'>&nbsp;&nbsp;&nbsp;Konfirmasi password tidak sama</div>";
+						$("#password__match").html(html);
+						$("#register__btn").prop("disabled", true);
+					} else {
+						$("#password__match").html("");
+						$("#register__btn").prop("disabled", false);
+					}
+				});
+				$("#email").on('input', function() {
+					var value = { email: $(this).val() };
+					$.get("<?= base_url() . 'pages/check-if-email-exist/' ?>", value,
+						function(respon) {
+							if(respon.status.toLowerCase()=="ok") {
+								var html = "<div class='col-sm-3'></div>";
+								html += "<div class='help-block col-sm-9 col-sm-reset inline'>&nbsp;&nbsp;&nbsp;Email sudah terdaftar</div>";
+								if(respon.exist) {
+									$("#email__exist").html(html);
+									$("#register__btn").prop("disabled", true);
+								} else {
+									$("#email__exist").html("");
+									$("#register__btn").prop("disabled", false);
 								}
 							}
 					}, 'json');
@@ -329,3 +361,34 @@
 		<script src="<?= base_url() ?>assets/admin/js/ace.min.js"></script>
 	</body>
 </html>
+<script type="text/javascript">
+				$("#conf_password_regis").on('input', function() {
+					var pass = $("#password_regis").val();
+					var conf_pass = $(this).val();
+					if (pass != conf_pass) {
+						var html = "<div class='help-block col-xs-12 col-sm-reset inline'>Konfirmasi password tidak sama</div>";
+						$("#password__match").html(html);
+						$("#register__btn").prop("disabled", true);
+					} else {
+						$("#password__match").html("");
+						$("#register__btn").prop("disabled", false);
+					}
+				});
+				$("#email_regis").on('input', function() {
+					var value = { email: $(this).val() };
+					$.get("<?= base_url() . 'pages/check-if-email-exist/' ?>", value,
+						function(respon) {
+							if(respon.status.toLowerCase()=="ok") {
+								console.log('tst');
+								var html = "<div class='help-block col-xs-12 col-sm-reset inline'>Email sudah terdaftar</div>";
+								if(respon.exist) {
+									$("#email__exist").html(html);
+									$("#register__btn").prop("disabled", true);
+								} else {
+									$("#email__exist").html("");
+									$("#register__btn").prop("disabled", false);
+								}
+							}
+					}, 'json');
+				});
+			</script>
