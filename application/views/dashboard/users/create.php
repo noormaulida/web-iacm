@@ -170,7 +170,7 @@
 										</div>
 									</div>
 
-									<div class="form-group <?= form_error('password') ? 'has-error' : ''; ?>">
+									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Password </label>
 
 										<div class="col-sm-9">
@@ -179,14 +179,13 @@
 													'class'			=> 'col-xs-10 col-sm-5',
 													'placeholder' 	=> 'Password',
 													'name'			=> 'password',
-													'value'			=> !form_error('password') ? set_value('password') : '',
 									            );
 									            echo form_password($data);
 											?>
 										</div>
 									</div>
 
-									<div class="form-group <?= form_error('password') ? 'has-error' : ''; ?>">
+									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Konfirmasi Password </label>
 
 										<div class="col-sm-9">
@@ -195,7 +194,6 @@
 													'class'			=> 'col-xs-10 col-sm-5',
 													'placeholder' 	=> 'Konfirmasi Password',
 													'name'			=> 'conf_password',
-													'value'			=> !form_error('password') ? set_value('password') : '',
 									            );
 									            echo form_password($data);
 											?>

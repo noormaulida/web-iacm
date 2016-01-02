@@ -70,10 +70,9 @@
 														<span class="block input-icon input-icon-right">
 															<?php
 																$data = array(
-																	'class'			=> "form-control <?= form_error('password_login') ? 'has-error' : ''; ?>",
+																	'class'			=> "form-control",
 																	'placeholder' 	=> 'Password',
 																	'name'			=> 'password_login',
-																	'value'			=> !form_error('password_login') ? set_value('password_login') : '',
 													            );
 													            echo form_password($data);
 															?>
@@ -219,7 +218,7 @@
 														</label>
 													</div>
 
-													<div class="<?= form_error('password_regis') ? 'has-error' : '' ?>">
+													<div class="">
 														<label class="block clearfix">
 															<span class="block input-icon input-icon-right">
 																<?php
@@ -227,7 +226,6 @@
 																		'class'			=> 'form-control',
 																		'placeholder' 	=> 'Password',
 																		'name'			=> 'password_regis',
-																		'value'			=> !form_error('password_regis') ? set_value('password_regis') : '',
 														            );
 														            echo form_password($data);
 																?>
@@ -236,7 +234,7 @@
 														</label>
 													</div>
 
-													<div class="<?= form_error('password_regis') ? 'has-error' : '' ?>">
+													<div class="">
 														<label class="block clearfix">
 															<span class="block input-icon input-icon-right">
 																<?php
@@ -244,7 +242,6 @@
 																		'class'			=> 'form-control',
 																		'placeholder' 	=> 'Konfirmasi Password',
 																		'name'			=> 'conf_password',
-																		'value'			=> !form_error('password_regis') ? set_value('password_regis') : '',
 														            );
 														            echo form_password($data);
 																?>
