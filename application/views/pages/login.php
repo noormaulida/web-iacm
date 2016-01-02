@@ -48,7 +48,7 @@
 											<?php
 												endif;
           									$attributes = array("id" => "loginform", "name" => "loginform");
-          									echo form_open("users/login", $attributes);?>
+          									echo form_open("pages/login", $attributes);?>
 												<fieldset>
 													<input type="hidden" name="login_hidden" value="login">
 													<label class="block clearfix">
@@ -162,7 +162,7 @@
 											<?php
 												endif;
 			  									$attributes = array("id" => "regisform", "name" => "regisform", "class" => "form-horizontal");
-			  									echo form_open("users/login", $attributes);
+			  									echo form_open("pages/login", $attributes);
 			  								?>
 												<fieldset>
 													<input type="hidden" name="registration_hidden" value="registration">
