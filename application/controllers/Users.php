@@ -68,14 +68,4 @@ class Users extends CI_Controller {
             $this->load->view('dashboard/_include/footer');
         }
     }
-
-    public function check_if_email_exist()
-    {
-        $email = $this->input->get('email');
-        $data = [
-            'status' => 'ok',
-            'exist' => $this->user->is_email_exist($email) ? true : false,
-        ];
-        echo json_encode($data);
-    }
 }
