@@ -116,4 +116,13 @@ class Pages extends CI_Controller {
         redirect('pages/login', 'refresh');
     }
 
+    public function check_if_email_exist()
+    {
+        $email = $this->input->get('email');
+        $data = [
+            'status' => 'ok',
+            'exist' => $this->user->is_email_exist($email) ? true : false,
+        ];
+        echo json_encode($data);
+    }
 }
