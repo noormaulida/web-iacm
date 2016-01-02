@@ -48,7 +48,7 @@
 											<?php
 												endif;
           									$attributes = array("id" => "loginform", "name" => "loginform");
-          									echo form_open("users/login", $attributes);?>
+          									echo form_open("pages/login", $attributes);?>
 												<fieldset>
 													<input type="hidden" name="login_hidden" value="login">
 													<label class="block clearfix">
@@ -162,7 +162,7 @@
 											<?php
 												endif;
 			  									$attributes = array("id" => "regisform", "name" => "regisform", "class" => "form-horizontal");
-			  									echo form_open("users/login", $attributes);
+			  									echo form_open("pages/login", $attributes);
 			  								?>
 												<fieldset>
 													<input type="hidden" name="registration_hidden" value="registration">
@@ -210,11 +210,13 @@
 																		'placeholder' 	=> 'Email',
 																		'name'			=> 'email_regis',
 																		'value'			=> !form_error('email_regis') ? set_value('email_regis') : '',
+																		'id'			=> 'email_regis',
 														            );
 														            echo form_input($data);
 																?>
 																<i class="ace-icon fa fa-envelope"></i>
 															</span>
+															<div id="email__exist"></div>
 														</label>
 													</div>
 
@@ -226,6 +228,7 @@
 																		'class'			=> 'form-control',
 																		'placeholder' 	=> 'Password',
 																		'name'			=> 'password_regis',
+																		'id'			=> 'password_regis',
 														            );
 														            echo form_password($data);
 																?>
@@ -242,11 +245,13 @@
 																		'class'			=> 'form-control',
 																		'placeholder' 	=> 'Konfirmasi Password',
 																		'name'			=> 'conf_password',
+																		'id'			=> 'conf_password_regis',
 														            );
 														            echo form_password($data);
 																?>
 																<i class="ace-icon fa fa-lock"></i>
 															</span>
+															<div id="password__match"></div>
 														</label>
 													</div>
 
@@ -415,7 +420,7 @@
 															<span class="bigger-110">Reset</span>
 														</button>
 
-														<button type="submit" class="width-65 pull-right btn btn-sm btn-success">
+														<button id="register__btn" type="submit" class="width-65 pull-right btn btn-sm btn-success">
 															<span class="bigger-110">Register</span>
 
 															<i class="ace-icon fa fa-arrow-right icon-on-right"></i>
@@ -454,6 +459,38 @@
 				$('.widget-box.visible').removeClass('visible');
 				$(target).addClass('visible');
 			 });
+			});
+		</script>
+		<script type="text/javascript">
+
+			$("#conf_password_regis").on('input', function() {
+				var pass = $("#password_regis").val();
+				var conf_pass = $(this).val();
+				if (pass != conf_pass) {
+					var html = "<div class='help-block col-xs-12 col-sm-reset inline'>Konfirmasi password tidak sama</div>";
+					$("#password__match").html(html);
+					$("#register__btn").prop("disabled", true);
+				} else {
+					$("#password__match").html("");
+					$("#register__btn").prop("disabled", false);
+				}
+			});
+			$("#email_regis").on('input', function() {
+				var value = { email: $(this).val() };
+				$.get("<?= base_url() . 'pages/check-if-email-exist/' ?>", value,
+					function(respon) {
+						if(respon.status.toLowerCase()=="ok") {
+							console.log('tst');
+							var html = "<div class='help-block col-xs-12 col-sm-reset inline'>Email sudah terdaftar</div>";
+							if(respon.exist) {
+								$("#email__exist").html(html);
+								$("#register__btn").prop("disabled", true);
+							} else {
+								$("#email__exist").html("");
+								$("#register__btn").prop("disabled", false);
+							}
+						}
+				}, 'json');
 			});
 		</script>
 	</body>

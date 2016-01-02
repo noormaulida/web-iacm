@@ -127,7 +127,7 @@
 								<li class="divider"></li>
 
 								<li>
-									<a href="<?php echo base_url() . "users/logout"; ?>">
+									<a href="<?php echo base_url() . "pages/logout"; ?>">
 										<i class="ace-icon fa fa-power-off"></i>
 										Logout
 									</a>

@@ -22,7 +22,7 @@ Web Ikatan Alumni Cahaya Madani Banten Boarding School
 1. Do step 6 and 7 manually if you're added new migration (Note: file migration name must be sequentially prefixed as setting **`$config['migration_type']`** in **`application/config/migration.php`** file).
 1. If you want to rollback the **`017_name_file`** migration (will used **`down`** method), use **`$config['migration_version'] = 16`** (It means you should use the smaller number than your-prefix-migration-name-you-want-to-rollback).
 1. Create username and password for admin with command **`php index.php console new-admin [your email] [your password]`** in the root project.
-1. Try login in with url **`/users/login`**.
+1. Try login in with url **`/pages/login`**.
 1. Done!
 
 -----------------------------------------------------------------------------------------
