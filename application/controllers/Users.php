@@ -51,7 +51,11 @@ class Users extends CI_Controller {
                     }
                 } else {
                     $this->session->set_userdata('tab', "login");
-                    $this->session->set_flashdata('error_login', 'Username/Password salah');
+                    if ($this->user->is_email_exist($this->input->post("email_login"))) {
+                        $this->session->set_flashdata('error_login', 'Data Anda belum divalidasi');
+                    } else {
+                        $this->session->set_flashdata('error_login', 'Username/Password salah');
+                    }
                     $this->load->view('users/login');
                 }
             }
