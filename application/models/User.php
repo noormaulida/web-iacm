@@ -11,6 +11,8 @@ class User extends CI_Model {
         $this->db->from('users');
         $this->db->where('email', $email);
         $this->db->where('password', $this->_hash($password));
+        $this->db->where('validated_at IS NOT NULL', null);
+        $this->db->where('validated_with IS NOT NULL', null);
         $this->db->limit(1);
 
         $query = $this->db->get();
