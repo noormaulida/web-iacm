@@ -225,7 +225,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tanggal Lahir </label>
 
 										<div class="col-sm-9">
-											<!-- <input class="date-picker col-xs-10 col-sm-5" placeholder="dd-mm-yyyy" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" /> -->
+											<!-- <input class="date-picker col-xs-10 col-sm-5" placeholder="dd-mm-yyyy" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" /> -->//kenapa dikomen ini teh?
 											<?php
 												$data = array(
 													'class'			=> 'col-xs-10 col-sm-5',
@@ -255,13 +255,13 @@
 									</div>
 
 									<div class="form-group <?= form_error('cm_generation') ? 'has-error' : ''; ?>">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Angkatan Ke- </label>
+										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Angkatan ke- </label>
 
 										<div class="col-sm-9">
 											<?php
 												$options = array(
 													'' => "--Pilih salah satu--",
-													'1' => '01',
+													'1' => '01',//kenapa pake 01 teh untuk hasilnya kenapa ga 1 aja?
 													'2' => '02',
 													'3' => '03',
 													'4' => '04',
@@ -297,8 +297,23 @@
 
 									<div class="form-group <?= form_error('institution') ? 'has-error' : ''; ?>">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Nama Universitas </label>
+										
 										<div class="col-sm-9">
+										<!--Pilih Universitas berdasarkan nama universita pada database-->	
 										<?php
+										$isi = mysql_fetch_array(mysql_query("SELECT nama_univ from univ"));//get nama_univ from table univ
+										echo '
+										<select name="">
+											<option value=""> --Pilih salah satu--</option>';
+										foreach ($isi as $isian) {
+											extract($isi);
+											echo '<option value="'.$nama_univ.'">'.$nama_univ.'</option>';//show nama_univ
+										}
+										echo "</select>";														?>
+										?>
+										<!--End-->
+										
+										<!--<?php
 											$data = array(
 												'class'			=> 'col-xs-10 col-sm-5',
 												'placeholder' 	=> 'Nama Universitas',
@@ -306,7 +321,7 @@
 												'value'			=> !form_error('institution') ? set_value('institution') : '',
 								            );
 								            echo form_input($data);
-										?>
+										?>-->
 										</div>
 									</div>
 
