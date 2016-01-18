@@ -121,4 +121,13 @@ class User extends CI_Model {
     {
         return sha1(md5($password));
     }
+    
+    public function get_univ_list()//get univ list
+    {
+        $this->db->select('univ_name');
+        $this->db->from('univ');
+
+        $query = $this->db->get();
+        return $query->result();
+    }
 }
