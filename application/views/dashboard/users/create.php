@@ -225,7 +225,7 @@
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Tanggal Lahir </label>
 
 										<div class="col-sm-9">
-											<!-- <input class="date-picker col-xs-10 col-sm-5" placeholder="dd-mm-yyyy" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" /> -->//kenapa dikomen ini teh?
+											<!-- <input class="date-picker col-xs-10 col-sm-5" placeholder="dd-mm-yyyy" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" /> -->
 											<?php
 												$data = array(
 													'class'			=> 'col-xs-10 col-sm-5',
@@ -261,14 +261,14 @@
 											<?php
 												$options = array(
 													'' => "--Pilih salah satu--",
-													'1' => '01',//kenapa pake 01 teh untuk hasilnya kenapa ga 1 aja?
-													'2' => '02',
-													'3' => '03',
-													'4' => '04',
-													'5' => '05',
-													'6' => '06',
-													'7' => '07',
-													'8' => '08',
+													'1' => '1',
+													'2' => '2',
+													'3' => '3',
+													'4' => '4',
+													'5' => '5',
+													'6' => '6',
+													'7' => '7',
+													'8' => '8',
 												);
 												echo form_dropdown('cm_generation', $options, !form_error('cm_generation') ? set_value('cm_generation') : '');
 											?>
@@ -301,13 +301,12 @@
 										<div class="col-sm-9">
 										<!--Pilih Universitas berdasarkan nama universita pada database-->	
 										<?php
-										$isi = mysql_fetch_array(mysql_query("SELECT nama_univ from univ"));//get nama_univ from table univ
 										echo '
 										<select name="">
 											<option value=""> --Pilih salah satu--</option>';
-										foreach ($isi as $isian) {
-											extract($isi);
-											echo '<option value="'.$nama_univ.'">'.$nama_univ.'</option>';//show nama_univ
+										foreach ($univ_list as $univ_list2) {
+											extract($univ_list);
+											echo '<option value="'.$univ_name.'">'.$univ_name.'</option>';//show nama_univ
 										}
 										echo "</select>";														?>
 										?>
